@@ -21,18 +21,19 @@
       line-height: 1.4;
       font-weight: 800;
       font-family: "Courier New", Courier, monospace;
+      width: 100%;
+      max-width: 645px;
 
       .typing-text {
         color: #00f1ff;
         padding-right: 5px;
-        margin-left: 15px;
         font-size: 35px;
         border-right: 4px solid #00f2ff91;
         font-family: "Courier New", Courier, monospace;
         overflow: hidden;
         position: relative;
         white-space: nowrap;
-        width: 400px; /* Prevent width interference on smaller screens */
+        width: 400px;
 
         .text {
           display: inline-block;
@@ -137,17 +138,17 @@
     }
 
     h2 {
-      font-size: 22px;
+      font-size: 20px;
 
       .typing-text {
         font-size: 26px;
         animation: typing 4s steps(30, end) infinite,
-          blink 0.5s step-end infinite; /* Faster typing on medium screens */
+          blink 0.5s step-end infinite;
       }
     }
 
     .typing-text {
-      width: auto; /* Ensure no fixed width is causing issues */
+      width: auto;
     }
   }
 
@@ -155,6 +156,7 @@
     padding: 140px 30px;
     flex-direction: column-reverse;
     justify-content: center;
+    align-items: center;
 
     .home-section-text {
       top: 0;
@@ -166,18 +168,22 @@
       height: 250px;
     }
 
+    .home-section-text-name {
+      font-size: 40px !important;
+    }
+
     h2 {
-      font-size: 20px;
+      font-size: 25px !important;
 
       .typing-text {
-        font-size: 22px;
+        font-size: 22px !important;
         animation: typing 3s steps(30, end) infinite,
-          blink 0.5s step-end infinite; /* Faster typing on smaller screens */
+          blink 0.5s step-end infinite;
       }
     }
 
     .typing-text {
-      width: auto; /* Ensure no fixed width is causing issues */
+      width: auto;
     }
   }
 
@@ -196,15 +202,15 @@
     }
 
     h2 {
-      font-size: 22px !important;
+      font-size: 20px !important;
 
       .home-section-text-name {
-        font-size: 35px !important;
+        font-size: 30px !important;
       }
       .typing-text {
-        font-size: 20px !important;
+        font-size: 18px !important;
         animation: typing 2s steps(30, end) infinite,
-          blink 0.5s step-end infinite; /* Faster typing on mobile */
+          blink 0.5s step-end infinite;
       }
     }
   }

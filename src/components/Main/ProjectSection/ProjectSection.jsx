@@ -1,135 +1,48 @@
-import { motion } from "framer-motion";
 import { IoIosArrowForward } from "react-icons/io";
+import { motion } from "framer-motion";
+import { projects } from "../../../helper";
 
 import "./ProjectSection.scss";
 
-import project1 from "../../../assets/images/project1.png";
-import project2 from "../../../assets/images/project2.png";
-import project3 from "../../../assets/images/project3.png";
-import project4 from "../../../assets/images/project4.png";
-import project5 from "../../../assets/images/project5.png";
-import project6 from "../../../assets/images/project6.png";
+const fadeInUp = (delay) => ({
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay } },
+});
 
 const ProjectSection = () => {
-  const fadeInVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
   return (
     <motion.section
       className="project-section"
       id="Projects"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.3 }}
-      variants={staggerContainer}
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <motion.h3 variants={fadeInVariants}>Projects</motion.h3>
-      <motion.p variants={fadeInVariants}>
+      <motion.h3 variants={fadeInUp(0)}>Projects</motion.h3>
+      <motion.p variants={fadeInUp(0.1)}>
         Here you will find some of the personal and clients projects that I
         created with each project <br /> containing its own case study
       </motion.p>
 
-      <motion.div
-        className="project-section-my-all-projects"
-        variants={staggerContainer}
-      >
-        <motion.div className="project" variants={fadeInVariants}>
-          <img src={project1} alt="img" />
-          <div className="project-text">
-            <h3>
-              High-end, custom residential renovaters serving Fraser Valley
-              homeowners.
-            </h3>
-            <a href="https://wfdesignbuild.com/">
-              <button>
-                Visit WebSite <IoIosArrowForward />
-              </button>
-            </a>
-          </div>
-        </motion.div>
-        <motion.div className="project" variants={fadeInVariants}>
-          <img src={project2} alt="img" />
-          <div className="project-text">
-            <h3>
-              Accounting and tax services characterized by quality, reliability
-              and trust.
-            </h3>
-            <a href="https://burkettandco.ca/">
-              <button>
-                Visit WebSite <IoIosArrowForward />
-              </button>
-            </a>
-          </div>
-        </motion.div>
-        <motion.div className="project" variants={fadeInVariants}>
-          <img src={project3} alt="img" />
-          <div className="project-text">
-            <h3>
-              Blockchain pioneers bringing transparency, trust, and security to
-              supply.
-            </h3>
-            <a href="https://www.chronicled.com/">
-              <button>
-                Visit WebSite <IoIosArrowForward />
-              </button>
-            </a>
-          </div>
-        </motion.div>
-        <motion.div className="project" variants={fadeInVariants}>
-          <img src={project4} alt="img" />
-          <div className="project-text">
-            <h3>
-              Business savvy tech experts helping forward thinking companies get
-              things done.
-            </h3>
-            <a href="https://www.glcsolutions.ca/">
-              <button>
-                Visit WebSite <IoIosArrowForward />
-              </button>
-            </a>
-          </div>
-        </motion.div>
-        <motion.div className="project" variants={fadeInVariants}>
-          <img src={project5} alt="img" />
-          <div className="project-text">
-            <h3>
-              Vancouver's tower crane rental service and support leader since
-              1974.
-            </h3>
-            <a href="https://coupalcranes.com/">
-              <button>
-                Visit WebSite <IoIosArrowForward />
-              </button>
-            </a>
-          </div>
-        </motion.div>
-        <motion.div className="project" variants={fadeInVariants}>
-          <img src={project6} alt="img" />
-          <div className="project-text">
-            <h3>
-              Results-oriented, responsive and flexible full service civil
-              engineering firm.
-            </h3>
-            <a href="https://www.wedler.com/">
-              <button>
-                Visit WebSite <IoIosArrowForward />
-              </button>
-            </a>
-          </div>
-        </motion.div>
-      </motion.div>
+      <div className="project-section-my-all-projects">
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            className="project"
+            variants={fadeInUp(index * 0.2)}
+          >
+            <img src={project.img} alt="Project" />
+            <div className="project-text">
+              <h3>{project.text}</h3>
+              <a href={project.link}>
+                <button>
+                  Visit WebSite <IoIosArrowForward />
+                </button>
+              </a>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </motion.section>
   );
 };

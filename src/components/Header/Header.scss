@@ -14,6 +14,7 @@
     font-size: 40px;
     cursor: pointer;
   }
+
   & .menu {
     display: none;
   }
@@ -28,6 +29,7 @@
     & > li {
       font-size: 15px;
       color: white;
+
       & > a {
         color: white;
         position: relative;
@@ -87,7 +89,16 @@
     }
 
     & > nav > ul {
-      display: none;
+      display: none; /* Hide the menu by default on mobile */
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      background-color: #1f232d;
+      width: 100%;
+      padding: 20px 0;
+      transform: translateY(-100%); /* Start off-screen */
+      transition: transform 0.3s ease; /* Animation for opening */
     }
 
     .menu {
@@ -96,6 +107,12 @@
       color: #00eeff;
       position: relative;
       top: -5px;
+      cursor: pointer;
+    }
+
+    & > nav > ul.open {
+      display: flex;
+      transform: translateY(0); /* Slide the menu into view */
     }
   }
 
