@@ -5,6 +5,7 @@ import man from "../../../assets/images/man-with-laptop_165488-3853.jpg";
 import cv from "../../../assets/page/Roma Paronyan.pdf";
 
 import "./HomeSection.scss";
+import { Link } from "react-router-dom";
 
 const HomeSection = () => {
   const [currentText, setCurrentText] = useState("");
@@ -23,7 +24,7 @@ const HomeSection = () => {
 
     if (deleting) {
       timeout = setTimeout(() => {
-        setCurrentText((prev) => prev.slice(0, prev.length - 1)); // delete one character
+        setCurrentText((prev) => prev.slice(0, prev.length - 1));
         if (currentText.length === 0) {
           setDeleting(false);
           setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
@@ -33,7 +34,7 @@ const HomeSection = () => {
       timeout = setTimeout(() => {
         setCurrentText(
           (prev) => prev + texts[currentIndex].charAt(prev.length)
-        ); // add one character
+        );
         if (currentText.length === texts[currentIndex].length) {
           setDeleting(true);
         }
@@ -65,10 +66,14 @@ const HomeSection = () => {
 
         <motion.div className="home-section-text-icons" variants={fadeIn(0.4)}>
           <div className="home-section-text-icons-linkedin">
-            <FaLinkedin />
+            <Link to="https://www.linkedin.com/in/%D5%BC%D5%B8%D5%B4%D5%A1-%D5%BA%D5%A1%D6%80%D5%B8%D5%B6%D5%B5%D5%A1%D5%B6-a02809277/">
+              <FaLinkedin />
+            </Link>
           </div>
           <div className="home-section-text-icons-github">
-            <FaGithub />
+            <Link to="https://github.com/Front-Rent">
+              <FaGithub />
+            </Link>
           </div>
         </motion.div>
 
